@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Часы</title>
+
+</head>
+
+<body>
+    <style>
+    </style>
+
+    <div id="clocks">
+        <div id="clock1"></div>
+        <div id="clock2"></div>
+        <div id="clock3"></div>
+        <div id="clock4"></div>
+    </div>
+
+  
+    <script src="clock.js"></script>
+    <script src="ClockViewDOM.js"></script>
+    <script src="ClockControllerButtons.js"></script>
+    <script src="ClockViewSVG.js"></script> 
+   
+    <script>
+        //часы New York
+        const clockNewYork = new Clock(-300);
+        const clockNewYorkView = new ClockViewDOM(100, clockNewYork);
+        const clockNewYorkController = new ClockControllerButtons(document.getElementById('clock1'), clockNewYorkView, 'Нью-Йорк (GMT-5)');
+        clockNewYorkController.start();
+
+        //часы London
+        const clockLondon = new Clock(0);
+        const clockLondonViewDOM = new ClockViewDOM(100, clockLondon);
+        const clockLondonController = new ClockControllerButtons(document.getElementById('clock2'), clockLondonViewDOM, 'Лондон (GMT)');
+        clockLondonController.start();
+
+        //часы Minsk
+        const clockMinsk = new Clock(180);
+        const clockMinskViewSVG = new ClockViewSVG(100, clockMinsk);
+        const clockMinskController = new ClockControllerButtons(document.getElementById('clock3'), clockMinskViewSVG, 'Минск (GMT+3)') ;
+        clockMinskController.start();
+
+        //часы Tokio
+        const clockTokio = new Clock(540);
+        const clockTokioViewSVG = new ClockViewSVG(100, clockTokio);
+        const clockTokioController = new ClockControllerButtons(document.getElementById('clock4'), clockTokioViewSVG, 'Токио (GMT+9)') ;
+        clockTokioController.start();
+
+    </script>
+
+</body>
+
+</html>
